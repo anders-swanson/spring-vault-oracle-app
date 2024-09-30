@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.oracle.bmc.vault.model.Base64SecretContentDetails;
 import com.oracle.bmc.vault.model.CreateSecretDetails;
-import com.oracle.bmc.vault.model.SecretContentDetails;
 import com.oracle.cloud.spring.vault.VaultTemplate;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -21,11 +20,11 @@ public class AppController {
 
     // The value of the Vault secret "mysecret" will be injected into "mySecretValue"
     // by the Spring property source loader.
-    @Value("${mysecret}")
-    private String mySecretValue;
+    @Value("${s1}")
+    private String secret1;
 
-    @Value("${anotherSecret}")
-    private String anotherSecretValue;
+    @Value("${s2}")
+    private String secret2;
 
     public AppController(VaultTemplate vaultTemplate) {
         this.vaultTemplate = vaultTemplate;
@@ -34,7 +33,7 @@ public class AppController {
     @GetMapping("/values")
     public ResponseEntity<?> showValues() {
         return ResponseEntity.ok(List.of(
-                mySecretValue, anotherSecretValue
+                secret1, secret2
         ));
     }
 
