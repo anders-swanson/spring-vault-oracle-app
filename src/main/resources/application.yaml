@@ -6,8 +6,6 @@ spring:
       region:
         static: ${OCI_REGION}
       vault:
-        # Vault id for VaultTemplate
-        vault-id: ${OCI_VAULT_ID}
         # OCI Compartment containing OCI Vault instance(s)
         compartment: ${OCI_COMPARTMENT_ID}
         enabled: true
